@@ -14,6 +14,7 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 
 public class RecipearConfig {
 	public static boolean removeingame = false;
+	public static boolean removeclient = false;
 	public static boolean debug = false;
 	public static int removeingameinterval = 60;
 	public static String placeholderName = "$cBanned Recipe";
@@ -35,6 +36,7 @@ public class RecipearConfig {
 		try
 		{
 			cfg.load();
+			removeclient = cfg.get("Features", "RemoveClient", removeclient, "Set this to true if you want the items to be fully removed from the client in addition to the server, rather than being just placeholdered.").getBoolean(false);
 			removeingame = cfg.get("Features", "RemoveIngame", removeingame, "Set this to true if you want to remove banned items from players at login and every interval").getBoolean(false);
 			removeingameinterval = cfg.get("Features", "RemoveIngameInterval", removeingameinterval, "Interval in seconds to check if player have a banned item, default is 60 seconds").getInt(60);
 			debug  = cfg.get(cfg.CATEGORY_GENERAL, "Debug", debug, "Turns on debug output in console/log, good if you need to see the inner workings.").getBoolean(false);

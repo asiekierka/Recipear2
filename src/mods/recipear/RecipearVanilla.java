@@ -45,7 +45,7 @@ public class RecipearVanilla {
 			RecipearLogger.debug("OUTPUT: " + DISPLAYNAME + ", ID: " + ITEMID + ", METADATA: " + METADATA + ", NBTCOUNT: " + NBTTAGSCOUNT);
 
 			if((!Recipear.outputting) && BannedRecipes.Check(ITEMID, METADATA, "CRAFTING") || BannedRecipes.Check(DISPLAYNAME.replaceAll("\\s+","").toLowerCase(), "CRAFTING")) {
-				if (!Recipear.server) {
+				if (!Recipear.server && !RecipearConfig.removeclient) {
 					RecipearLogger.info("Placeholding: " + DISPLAYNAME + ", ID: " + ITEMID + ", METADATA: " + METADATA);
 					RecipearUtil.setCraftingRecipeOutput(iRecipe, RECIPE_OUTPUT);
 					itemsremoved++;
